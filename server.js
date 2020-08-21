@@ -26,7 +26,11 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+//Define api routes
 app.use(authRouter, usersRouter, errorMiddleware);
+
+// connect to the Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user6:password6@ds061691.mlab.com:61691/heroku_s0kzqlxg");
 
 // Send all other requests to react app
 app.get("*", (req, res) => {
