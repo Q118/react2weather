@@ -5,6 +5,7 @@ import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Saved from "./pages/Saved";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/saved">
             <Saved />
+          </Route>
+          <Route exact path="/search">
+            <Search />
           </Route>
           <Route>
             <NoMatch />
