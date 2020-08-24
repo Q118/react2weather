@@ -19,7 +19,7 @@ function Navbar() {
 		</NavLink>
 	);
 	return (
-		<nav className="Navbar">
+		<nav className="Navbar mb-5">
 			{links}
 		</nav>
 	);

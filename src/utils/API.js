@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  getCity: function (city) {
+    return axios.get("/api/data/2.5/forecast?q=" + city);
   },
   // Gets the book with the given id
   getBook: function(id) {
