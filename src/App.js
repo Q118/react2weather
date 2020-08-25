@@ -9,6 +9,7 @@ import React from "react";
 // import Saved from "./pages/Saved";
 // import Search from "./components/Search";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Cities from "./pages/Cities";
 
 //hard coding city name for now
 var city = "Tulsa";
@@ -31,9 +32,7 @@ class App extends React.Component {
 			description: "",
 		};
 
-		// this.create = this.create.bind(this);
-		// this.update = this.update.bind(this);
-		// this.delete = this.delete.bind(this);
+		this.create = this.create.bind(this);
 		// this.handleChange = this.handleChange.bind(this);
 	}
 
@@ -41,10 +40,10 @@ class App extends React.Component {
 		fetch(queryURL, {
 			method: "GET",
 		})
-			.then((response) => response.json())
-			.then((response) => {
+			.then((res) => res.json())
+			.then((res) => {
 				this.setState({
-					temp: response.main.temp,
+					temp: "",
 				});
 			})
 			.catch((err) => {
@@ -59,13 +58,13 @@ class App extends React.Component {
 		fetch(queryURL, {
 			method: "POST",
 			body: JSON.stringify({
-				name: this.state.name,
-				description: this.state.weather.description,
+				name: "",
+				// description: this.state.weather.description,
 			}),
 		})
-			.then((response) => response.json())
-			.then((response) => {
-				console.log(response);
+			.then((res) => res.json())
+			.then((res) => {
+				console.log(res.city.name);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -84,7 +83,7 @@ class App extends React.Component {
 						<form className="d-flex flex-column">
 							<legend className="text-center">Add-Update-Delete Friend</legend>
 							<label htmlFor="name">
-								Friend Name:
+								Search For City:
 								<input
 									name="name"
 									id="name"
@@ -95,48 +94,14 @@ class App extends React.Component {
 									required
 								/>
 							</label>
-							<label htmlFor="notes">
-								Friend notes:
-								<input
-									name="notes"
-									id="notes"
-									type="test"
-									className="form-control"
-									value={this.state.notes}
-									onChange={(e) => this.handleChange({ notes: e.target.value })}
-									required
-								/>
-							</label>
-							<label htmlFor="id">
-								Friend ID:
-								<input
-									name="id"
-									id="id"
-									type="text"
-									className="form-control"
-									value={this.state.id}
-									onChange={(e) => this.handleChange({ id: e.target.value })}
-								/>
-							</label>
 							<button
 								className="btn btn-primary"
 								type="button"
 								onClick={(e) => this.create(e)}>
-								Add
+								Search
 							</button>
-							<button
-								className="btn btn-info"
-								type="button"
-								onClick={(e) => this.update(e)}>
-								Update
-							</button>
-							<button
-								className="btn btn-danger"
-								type="button"
-								onClick={(e) => this.delete(e)}>
-								Delete
-							</button>
-						</form>
+							</form>
+							<Cities cities={this.state.cities} />
 					</div>
 				</div>
 			</div>
