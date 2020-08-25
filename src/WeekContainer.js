@@ -6,7 +6,7 @@
 import React from "react";
 import apiConfig from "./apiKeys";
 import DayCard from "./DayCard";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 class WeekContainer extends React.Component {
 	state = {
@@ -41,9 +41,15 @@ class WeekContainer extends React.Component {
 
 	render() {
 		return (
-			<div>
-				{this.formatDayCards()}
-			</div>
+            <div className="container">
+            <h1 className="display-1 jumbotron">5-Day Forecast.</h1>
+            <h5 className="display-5 text-muted">New York, US</h5>
+              <div className="row justify-content-center">
+      
+                {this.formatDayCards()}
+      
+              </div>
+            </div>
 		);
 	}
 }

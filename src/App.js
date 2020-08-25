@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 //import css page
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import WeekContainer from "./WeekContainer";
 
 
